@@ -1,0 +1,107 @@
+android:
+  defaultVersion: "10"
+  path: /wd/hub
+
+  #kernelCaps:
+    #- SYS_ADMIN
+  volumes:
+    - name: kvm
+      hostPath:
+        path: /dev/kvm
+  securityContext:
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    privileged: true
+    capabilities:
+      add:
+      - net_raw
+      - NET_ADMIN
+  versions:
+    '8.1':
+      image: selenoid/android:8.1
+      port: 4444
+      spec:
+        env:
+          - name: VERBOSE
+            value: 1
+          - name: APPIUM_ARGS
+            value: --log-level debug
+          #- name: ENABLE_VNC
+            #value: "true"
+        resources:
+          requests:
+            cpu: 2
+            memory: 6G
+          limits:
+            cpu: 2
+            memory: 6G
+
+        volumeMounts:
+          - mountPath: /dev/kvm
+            name: kvm
+    '9.0':
+      image: selenoid/android:9.0
+      port: 4444
+      spec:
+        env:
+          - name: VERBOSE
+            value: 1
+          - name: APPIUM_ARGS
+            value: --log-level debug
+          #- name: ENABLE_VNC
+            #value: "true"
+        resources:
+          requests:
+            cpu: 2
+            memory: 6G
+          limits:
+            cpu: 2
+            memory: 6G
+
+        volumeMounts:
+          - mountPath: /dev/kvm
+            name: kvm
+    '9':
+      image: selenoid/android:9.0
+      port: 4444
+      spec:
+        env:
+          - name: VERBOSE
+            value: 1
+          - name: APPIUM_ARGS
+            value: --log-level debug
+          #- name: ENABLE_VNC
+            #value: "true"
+        resources:
+          requests:
+            cpu: 2
+            memory: 6G
+          limits:
+            cpu: 2
+            memory: 6G
+
+        volumeMounts:
+          - mountPath: /dev/kvm
+            name: kvm
+    '10':
+      image: selenoid/android:10.0
+      port: 4444
+      spec:
+        env:
+          - name: VERBOSE
+            value: 1
+          - name: APPIUM_ARGS
+            value: --log-level debug
+          #- name: ENABLE_VNC
+            #value: "true"
+        resources:
+          requests:
+            cpu: 2
+            memory: 6G
+          limits:
+            cpu: 2
+            memory: 6G
+
+        volumeMounts:
+          - mountPath: /dev/kvm
+            name: kvm
